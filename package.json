@@ -1,5 +1,5 @@
 {
-    "name": "scientific-notation",
+    "name": "@sctg/scientific-notation",
     "version": "1.0.0",
     "description": "A TypeScript library for converting numbers to various scientific notation formats",
     "main": "dist/scientific.min.js",
