@@ -1,4 +1,4 @@
-import { ScientificNotation } from "../src/scientific";
+import { ScientificNotation } from "../dist/scientific";
 
 describe("ScientificNotation", () => {
   describe("toScientificNotation", () => {
