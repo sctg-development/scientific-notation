@@ -87,8 +87,11 @@ export namespace ScientificNotation {
     }
     const mantissaString = mantissa.toPrecision(precision);
     // Compute the total number of digits
-    const totalDigits = mantissaString.replace(".", "").length;
+    const totalDigits = mantissaString.replace(".", "").replace("-", "").length;
 
+    if (totalDigits > precision) {
+      return mantissa.toString();
+    }
     // if totalDigits is less than precision, add zeros
     if (totalDigits < precision) {
       if (mantissaString.includes(".")) {
@@ -123,7 +126,13 @@ export namespace ScientificNotation {
   ): string {
     const { mantissa, exponent } = toScientificNotation(value, precision);
 
-    return `${mantissa}e${exponent}`;
+    if (exponent === 0) {
+      return toMantissaString(mantissa, precision);
+    } else if (exponent === 1) {
+      return `${toMantissaString(mantissa * 10, precision)}`;
+    } else {
+      return `${toMantissaString(mantissa, precision)}e${exponent}`;
+    }
   }
 
   /**
